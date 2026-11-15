@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --bg: #FAF9F7;
+  --surface: #FFFFFF;
+  --sidebar-bg: #F5F3EF;
+  --border: #EAE8E4;
+  --border-strong: #DEDCD6;
+  --text-primary: #14151A;
+  --text-secondary: #6B6D76;
+  --text-tertiary: #A0A2AC;
+  --accent: #0A66C2;
+  --accent-hover: #004182;
+  --accent-soft: rgba(10, 102, 194, 0.08);
+  --warm: #C2712B;
+  --warm-soft: rgba(194, 113, 43, 0.10);
+  --success: #0F7A5C;
+  --success-soft: rgba(15, 122, 92, 0.10);
+  --danger: #B23B3B;
+  --danger-soft: rgba(178, 59, 59, 0.10);
+}
+
+.dark {
+  --bg: #101114;
+  --surface: #17181C;
+  --sidebar-bg: #0B0C0F;
+  --border: #26272C;
+  --border-strong: #34353B;
+  --text-primary: #F2F1ED;
+  --text-secondary: #9C9DA6;
+  --text-tertiary: #6B6C74;
+  --accent: #70B5F9;
+  --accent-hover: #8FC5FA;
+  --accent-soft: rgba(112, 181, 249, 0.14);
+  --warm: #E0954B;
+  --warm-soft: rgba(224, 149, 75, 0.14);
+  --success: #33C08C;
+  --success-soft: rgba(51, 192, 140, 0.14);
+  --danger: #E0645F;
+  --danger-soft: rgba(224, 100, 95, 0.14);
+}
