@@ -51,7 +51,12 @@ export default function MessageTimeline({
         {messages.map((message) => (
           <MessageCard
             key={message.id}
-            message={message}
+            mine={message.sender === "agent"}
+            text={message.text}
+            time={message.created_at}
+            sender={message.sender === "agent" ? "Agent" : "Client"}
+            avatar={message.sender === "agent" ? "A" : "C"}
+            status={message.status ?? "read"}
           />
         ))}
 

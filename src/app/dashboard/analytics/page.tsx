@@ -175,8 +175,8 @@ export default function AnalyticsPage() {
                   tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
-                  formatter={(value: number) => [formatFCFA(value), "Revenu"]}
-                  labelFormatter={formatShortDate}
+                  formatter={(value: any) => [formatFCFA(Number(value) || 0), "Revenu"]}
+                  labelFormatter={(iso: any) => formatShortDate(String(iso))}
                   contentStyle={{
                     backgroundColor: "var(--surface)",
                     border: "1px solid var(--border)",
