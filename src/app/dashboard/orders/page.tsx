@@ -113,7 +113,7 @@ export default function OrdersPage() {
 
   const updateStatus = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
-     const res = await apiFetch(`/api/v1/orders/orders/${id}/status/`, {
+      const res = await apiFetch(`/api/v1/orders/orders/${id}/status/`, {
         method: "POST",
         body: JSON.stringify({ status }),
       });

@@ -69,11 +69,10 @@ export default function ConversationHeader({
               </h2>
 
               <span
-                className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                  customer.online
+                className={`rounded-full px-3 py-1 text-xs font-semibold ${customer.online
                     ? "bg-green-500/20 text-green-400"
                     : "bg-slate-700 text-slate-300"
-                }`}
+                  }`}
               >
                 {customer.online ? "En ligne" : "Hors ligne"}
               </span>

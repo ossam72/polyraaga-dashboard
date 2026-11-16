@@ -276,7 +276,7 @@ export default function ChatPage() {
   return (
     <div className="flex h-[calc(100vh-8rem)] gap-6">
       {/* Liste des conversations */}
-     <div className="w-80 shrink-0 overflow-y-auto rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-3">
+      <div className="w-80 shrink-0 overflow-y-auto rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-3">
         <div className="mb-3 px-2 text-sm font-semibold text-[var(--text-secondary)]">
           Conversations WhatsApp
         </div>
@@ -295,11 +295,10 @@ export default function ChatPage() {
             <button
               key={s.id}
               onClick={() => setSelectedId(s.id)}
-             className={`mb-2 block w-full rounded-2xl p-3 text-left transition border ${
-                isActive
+              className={`mb-2 block w-full rounded-2xl p-3 text-left transition border ${isActive
                   ? "border-[var(--accent)]"
                   : "border-transparent hover:bg-[var(--accent-soft)]"
-              }`}
+                }`}
               style={isActive ? { backgroundColor: "var(--accent-soft)" } : undefined}
             >
               <div className="flex items-center justify-between">
@@ -328,7 +327,7 @@ export default function ChatPage() {
       </div>
 
       {/* Fenêtre de conversation */}
-     <div className="relative flex flex-1 flex-col rounded-3xl border border-[var(--border)] bg-[var(--surface)]">
+      <div className="relative flex flex-1 flex-col rounded-3xl border border-[var(--border)] bg-[var(--surface)]">
         {!selected ? (
           <div className="flex flex-1 items-center justify-center text-[var(--text-tertiary)]">
             Sélectionne une conversation à gauche.
@@ -356,8 +355,8 @@ export default function ChatPage() {
                         isCustomer
                           ? { backgroundColor: "var(--bg)", color: "var(--text-primary)", border: "1px solid var(--border)" }
                           : m.sender === "AGENT"
-                          ? { backgroundColor: "var(--warm)", color: "#FFFFFF" }
-                          : { backgroundColor: "var(--accent)", color: "#FFFFFF" }
+                            ? { backgroundColor: "var(--warm)", color: "#FFFFFF" }
+                            : { backgroundColor: "var(--accent)", color: "#FFFFFF" }
                       }
                     >
                       <MessageMedia message={m} />

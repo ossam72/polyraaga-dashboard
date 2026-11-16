@@ -283,11 +283,10 @@ export default function SettingsPage() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as typeof activeTab)}
-            className={`flex items-center gap-2 py-3 px-4 font-semibold text-xs md:text-sm border-b-2 transition-all shrink-0 ${
-              activeTab === tab.id
+            className={`flex items-center gap-2 py-3 px-4 font-semibold text-xs md:text-sm border-b-2 transition-all shrink-0 ${activeTab === tab.id
                 ? "border-[var(--accent)] text-[var(--accent)]"
                 : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
+              }`}
           >
             {tab.icon}
             {tab.label}
@@ -593,11 +592,10 @@ export default function SettingsPage() {
                   <div className="flex items-center gap-2.5">
                     <span className="font-mono text-xs font-bold text-[var(--text-primary)] break-all">{wh.url}</span>
                     <span
-                      className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${
-                        wh.is_active
+                      className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${wh.is_active
                           ? "bg-[var(--success-soft)] text-[var(--success)]"
                           : "bg-[var(--border)] text-[var(--text-tertiary)]"
-                      }`}
+                        }`}
                     >
                       {wh.is_active ? "Actif" : "En veille"}
                     </span>
@@ -789,14 +787,12 @@ function ToggleOption({
       <button
         type="button"
         onClick={() => onChange(!checked)}
-        className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-          checked ? "bg-[var(--accent)]" : "bg-[var(--border)]"
-        }`}
+        className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${checked ? "bg-[var(--accent)]" : "bg-[var(--border)]"
+          }`}
       >
         <span
-          className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${
-            checked ? "translate-x-5" : "translate-x-0"
-          }`}
+          className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${checked ? "translate-x-5" : "translate-x-0"
+            }`}
         />
       </button>
     </div>

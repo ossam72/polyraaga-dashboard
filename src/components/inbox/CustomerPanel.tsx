@@ -211,8 +211,8 @@ export default function CustomerPanel({
   };
 
   const markAsPaid = async (orderId: string) => {
-    try { 
-   await apiFetch(`/api/v1/orders/orders/${orderId}/status/`, {
+    try {
+      await apiFetch(`/api/v1/orders/orders/${orderId}/status/`, {
         method: "POST",
         body: JSON.stringify({ status: "confirmed" }),
       });

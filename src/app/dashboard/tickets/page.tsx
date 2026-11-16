@@ -476,10 +476,10 @@ export default function TicketsPage() {
                       </div>
                       <div
                         className={`max-w-[80%] rounded-2xl px-4 py-3 text-xs leading-relaxed ${isCustomer
-                            ? "bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)]"
-                            : isAi
-                              ? "bg-[#5865F2] text-white"
-                              : "bg-[var(--accent)] text-white"
+                          ? "bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)]"
+                          : isAi
+                            ? "bg-[#5865F2] text-white"
+                            : "bg-[var(--accent)] text-white"
                           }`}
                       >
                         {reply.content}

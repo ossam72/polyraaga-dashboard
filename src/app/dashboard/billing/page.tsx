@@ -329,21 +329,19 @@ export default function BillingPage() {
         <div className="flex items-center bg-[var(--surface)] border border-[var(--border)] p-1 rounded-2xl shadow-sm self-start md:self-auto">
           <button
             onClick={() => setCycle("monthly")}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-              cycle === "monthly"
+            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${cycle === "monthly"
                 ? "bg-[var(--accent)] text-white shadow-sm"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
+              }`}
           >
             Facturation Mensuelle
           </button>
           <button
             onClick={() => setCycle("yearly")}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-              cycle === "yearly"
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${cycle === "yearly"
                 ? "bg-[var(--accent)] text-white shadow-sm"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
+              }`}
           >
             Annuelle
             <span className="px-1.5 py-0.2 rounded-md bg-[var(--success)] text-white text-[10px] font-bold">
@@ -467,13 +465,12 @@ export default function BillingPage() {
                 key={plan.id}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
-                className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-all ${
-                  isCurrent
+                className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-all ${isCurrent
                     ? "bg-[var(--surface)] border-2 border-[var(--accent)] shadow-xl shadow-[var(--accent)]/10"
                     : plan.popular
-                    ? "bg-[var(--surface)] border-2 border-[#5865F2]/50 shadow-lg shadow-[#5865F2]/10"
-                    : "bg-[var(--surface)] border border-[var(--border)]"
-                }`}
+                      ? "bg-[var(--surface)] border-2 border-[#5865F2]/50 shadow-lg shadow-[#5865F2]/10"
+                      : "bg-[var(--surface)] border border-[var(--border)]"
+                  }`}
               >
                 {/* Badges */}
                 <div className="flex items-center justify-between mb-4">
@@ -517,11 +514,10 @@ export default function BillingPage() {
                     <div key={idx} className="flex items-start gap-2.5 text-xs">
                       {feat.included ? (
                         <div
-                          className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                            feat.highlight
+                          className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${feat.highlight
                               ? "bg-[#5865F2] text-white"
                               : "bg-[var(--success-soft)] text-[var(--success)]"
-                          }`}
+                            }`}
                         >
                           <Check className="w-2.5 h-2.5" />
                         </div>
@@ -531,13 +527,12 @@ export default function BillingPage() {
                         </div>
                       )}
                       <span
-                        className={`${
-                          !feat.included
+                        className={`${!feat.included
                             ? "text-[var(--text-tertiary)] line-through opacity-60"
                             : feat.highlight
-                            ? "font-semibold text-[var(--text-primary)]"
-                            : "text-[var(--text-secondary)]"
-                        }`}
+                              ? "font-semibold text-[var(--text-primary)]"
+                              : "text-[var(--text-secondary)]"
+                          }`}
                       >
                         {feat.text}
                       </span>
@@ -549,13 +544,12 @@ export default function BillingPage() {
                 <button
                   disabled={isCurrent}
                   onClick={() => setSelectedPlanForUpgrade(plan)}
-                  className={`w-full py-3 rounded-2xl text-xs font-bold transition-all shadow-md active:scale-95 ${
-                    isCurrent
+                  className={`w-full py-3 rounded-2xl text-xs font-bold transition-all shadow-md active:scale-95 ${isCurrent
                       ? "bg-[var(--bg)] border border-[var(--border)] text-[var(--text-tertiary)] cursor-default"
                       : plan.popular
-                      ? "bg-[#5865F2] hover:bg-[#4752c4] text-white shadow-[#5865F2]/25"
-                      : "bg-[var(--accent)] hover:opacity-90 text-white shadow-[var(--accent)]/20"
-                  }`}
+                        ? "bg-[#5865F2] hover:bg-[#4752c4] text-white shadow-[#5865F2]/25"
+                        : "bg-[var(--accent)] hover:opacity-90 text-white shadow-[var(--accent)]/20"
+                    }`}
                 >
                   {isCurrent ? "Votre forfait en cours" : plan.buttonLabel}
                 </button>
@@ -605,13 +599,12 @@ export default function BillingPage() {
                   <td className="py-4 font-bold text-[var(--text-primary)]">{formatFCFA(inv.amount)}</td>
                   <td className="py-4">
                     <span
-                      className={`px-2.5 py-1 rounded-full text-[10px] font-semibold ${
-                        inv.status === "paid"
+                      className={`px-2.5 py-1 rounded-full text-[10px] font-semibold ${inv.status === "paid"
                           ? "bg-[var(--success-soft)] text-[var(--success)]"
                           : inv.status === "pending"
-                          ? "bg-[var(--warm-soft)] text-[var(--warm)]"
-                          : "bg-[var(--danger-soft)] text-[var(--danger)]"
-                      }`}
+                            ? "bg-[var(--warm-soft)] text-[var(--warm)]"
+                            : "bg-[var(--danger-soft)] text-[var(--danger)]"
+                        }`}
                     >
                       {inv.status === "paid" ? "Payée" : inv.status === "pending" ? "En attente" : "Échouée"}
                     </span>
