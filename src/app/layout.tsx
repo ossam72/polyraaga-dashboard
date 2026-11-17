@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Polyraaga",
-  description: "Polyraaga — Business Operating System",
+  title: "Scrafit — Plateforme E-Commerce & IA",
+  description: "Scrafit — Système d'exploitation commercial et agents WhatsApp d'élite",
+  icons: {
+    icon: "/scrafit-logo.jpg",
+  },
 };
 
 export default function RootLayout({

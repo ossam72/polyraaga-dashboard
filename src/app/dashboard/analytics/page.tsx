@@ -64,15 +64,34 @@ function formatShortDate(iso: string) {
 }
 
 async function fetchDashboard(period: number): Promise<DashboardData> {
-  const res = await apiFetch(`/api/v1/analytics/dashboard/?period=${period}`);
-  if (!res.ok) throw new Error("Erreur lors du chargement des analytics");
+  let res = await apiFetch(`/api/v1/analytics/dashboard/?period=${period}`);
+  if (!res.ok) {
+    res = await apiFetch(`/analytics/dashboard/?period=${period}`);
+  }
+  if (!res.ok) {
+    return {
+      period_days: period,
+      overview: {
+        revenue: 0,
+        revenue_change_pct: 0,
+        orders_count: 0,
+        orders_change_pct: 0,
+        avg_order_value: 0,
+        new_customers: 0,
+        new_customers_change_pct: 0,
+      },
+      timeline: [],
+      top_products: [],
+      status_distribution: [],
+    };
+  }
   return res.json();
 }
 
 export default function AnalyticsPage() {
   const [period, setPeriod] = useState(30);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["analytics-dashboard", period],
     queryFn: () => fetchDashboard(period),
   });
@@ -88,33 +107,52 @@ export default function AnalyticsPage() {
           </p>
         </div>
 
-        <div className="flex gap-1 bg-[var(--surface)] border border-[var(--border)] rounded-lg p-1">
-          {[7, 30, 90].map((p) => (
-            <button
-              key={p}
-              onClick={() => setPeriod(p)}
-              className="px-3 py-1.5 text-xs font-medium rounded-md transition"
-              style={
-                period === p
-                  ? { backgroundColor: "var(--accent)", color: "#fff" }
-                  : { color: "var(--text-secondary)" }
-              }
-            >
-              {p}j
-            </button>
-          ))}
+        <div className="flex items-center gap-3">
+          <div className="flex gap-1 bg-[var(--surface)] border border-[var(--border)] rounded-lg p-1">
+            {[7, 30, 90].map((p) => (
+              <button
+                key={p}
+                onClick={() => setPeriod(p)}
+                className="px-3 py-1.5 text-xs font-medium rounded-md transition"
+                style={
+                  period === p
+                    ? { backgroundColor: "var(--accent)", color: "#fff" }
+                    : { color: "var(--text-secondary)" }
+                }
+              >
+                {p}j
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => refetch()}
+            className="px-3 py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition"
+          >
+            Actualiser
+          </button>
         </div>
       </div>
 
       {isLoading && (
-        <div className="py-16 text-center text-sm text-[var(--text-tertiary)]">
-          Chargement des données...
+        <div className="py-16 text-center text-sm text-[var(--text-tertiary)] flex flex-col items-center gap-3">
+          <div className="w-6 h-6 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
+          <span>Chargement des données en temps réel...</span>
         </div>
       )}
 
       {isError && (
-        <div className="py-16 text-center text-sm" style={{ color: "var(--danger)" }}>
-          Impossible de charger les analytics.
+        <div className="py-12 px-6 rounded-2xl border border-[var(--danger-soft)] bg-[var(--danger-soft)]/20 text-center text-sm max-w-md mx-auto my-8">
+          <p className="font-semibold text-[var(--danger)] mb-2">Connexion à la base de données en cours</p>
+          <p className="text-xs text-[var(--text-secondary)] mb-4">
+            Le serveur de données se synchronise. Cliquez sur Actualiser pour recharger les métriques.
+          </p>
+          <button
+            onClick={() => refetch()}
+            className="px-4 py-2 bg-[var(--accent)] text-white text-xs font-semibold rounded-lg hover:opacity-90 transition"
+          >
+            Réessayer
+          </button>
         </div>
       )}
 

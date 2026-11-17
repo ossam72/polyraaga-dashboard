@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { setTokens } from "@/lib/api";
+import { setUser } from "@/lib/auth";
 import { Lock, User, AlertCircle, Sparkles, ArrowRight, Loader2, Server, CheckCircle2 } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
@@ -97,6 +98,11 @@ export default function LoginPage() {
 
       if (data.access) {
         setTokens(data.access, data.refresh || "");
+        if (data.user) {
+          setUser(data.user);
+        } else {
+          setUser({ username: isEmail ? username.split("@")[0] : username });
+        }
         router.push("/dashboard");
       } else {
         setError("Réponse inattendue du serveur d'authentification.");
@@ -120,14 +126,26 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] text-xs font-semibold mb-4">
-            <Sparkles className="w-3.5 h-3.5" /> Polyraaga Dashboard Studio
+          <div className="flex justify-center mb-4">
+            <div className="relative h-14 w-14 overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-[var(--border)] p-1 flex items-center justify-center">
+              <img
+                src="/scrafit-logo.jpg"
+                alt="Scrafit Logo"
+                className="h-full w-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = "none";
+                }}
+              />
+            </div>
+          </div>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] text-xs font-semibold mb-3">
+            <Sparkles className="w-3.5 h-3.5" /> Scrafit Business Operating System
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
-            Connexion Administrateur
+            Connexion Scrafit
           </h1>
           <p className="text-xs text-[var(--text-secondary)] mt-1.5">
-            Accédez à la gestion centralisée de vos ventes, IA et clients WhatsApp
+            Gérez vos ventes, vos clients WhatsApp et vos agents IA d&apos;élite
           </p>
         </div>
 
